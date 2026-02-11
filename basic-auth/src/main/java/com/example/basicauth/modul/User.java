@@ -1,9 +1,7 @@
 package com.example.basicauth.modul;
 
-import java.util.Collection;
 import java.util.Set;
 
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
@@ -25,7 +23,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,12 +45,9 @@ public class User implements UserDetails {
 	@JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
 	@Column(name = "role", nullable = false)
 	@Enumerated(EnumType.STRING)
-	private Set<Role> authorized;
+	private Set<Role> authorities;
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	
 
 }

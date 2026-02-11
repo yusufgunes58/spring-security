@@ -30,13 +30,13 @@ public class UserService {
 		User newUser = User.builder()
 				.username(request.username())
 				.password(passwordEncoder.encode(request.password()))
-				.authorized(request.authorities())
+				.authorities(request.authorities())
 				.accountNonExpired(true)
 				.credentialsNonExpired(true)
 				.isEnabled(true)
 				.accountNonLocked(true)
 				.build();
-		
+		System.out.println(request.authorities());
 		return userRepository.save(newUser);
 	}
 	
