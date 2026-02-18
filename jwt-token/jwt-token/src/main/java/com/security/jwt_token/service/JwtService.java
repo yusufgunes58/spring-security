@@ -37,7 +37,7 @@ public class JwtService {
         		.parser()
                 .verifyWith((SecretKey) getSignKey())      
                 .build()
-                .parseClaimsJws(token)
+                .parseSignedClaims(token)       
                 .getPayload();                  
         
         return claims.getExpiration();

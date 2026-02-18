@@ -16,7 +16,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
@@ -46,9 +45,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		
 	    if(username != null && SecurityContextHolder.getContext().getAuthentication()==null) {
 	    	UserDetails user = userService.loadUserByUsername(username);
-	    	 // log.info("user loaded " + user);
 	         	if(jwtService.validateToken(token, user)) {
-	         	//	log.info("user loaded " + user);
 	         		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, null,  user.getAuthorities());
 	         	    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 	         		SecurityContextHolder.getContext().setAuthentication(authToken);

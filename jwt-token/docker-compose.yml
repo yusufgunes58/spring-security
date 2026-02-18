@@ -1,12 +1,14 @@
+version: "3.8"
+
 services:
-	db:
-		image: mysql
-		restrat: always
-		container_name: ss-db
-		environment: 
-			MYSQL_ROOT_PASSWORD: yg-pass
-			MYSQL_DATABASE: ss-db
-			MYSQL_USER: ygunes
-			MYSQL_PASSWORD: y-suf
-		ports:
-			- '3306:3306'
+  db:
+    image: mysql:8.0.36
+    restart: always
+    container_name: ss-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 14789
+      MYSQL_DATABASE: ss_db
+      MYSQL_USER: ygunes
+      MYSQL_PASSWORD: y-suf
+    ports:
+      - "3307:3306"
